@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>自强学堂</title>
+</head>
+<body>
+ 
+<!-- <a href="/add/4/5/">计算 4+5</a> -->
+
+<a href="{% url 'add2' 4 5 %}">link</a>
+
+</body>
+</html>
+
+<hr>
+{{string}}
+<hr>
+
+{% for i in TutorialList %}
+{{i}} :
+{% endfor %}
+<hr>
+站点：{{ info_dict.site }} 内容：{{ info_dict.content }}
+
+<hr color="red">
+{% for key, value in info_dict.items %}
+{{ key }}: {{ value }}
+{% endfor %}
+
+<hr color="blue">
+{% for item in List %}
+    {{ item }}, 
+{% endfor %}
+
+<hr>
+{% for item in List %}
+    {{ item }}{% if not forloop.last %},{% endif %}
+{% endfor %}
+
+<br>
+{% if var >= 90 %}
+成绩优秀，自强学堂你没少去吧！学得不错
+{% elif var >= 80 %}
+成绩良好
+{% elif var >= 70 %}
+成绩一般
+{% elif var >= 60 %}
+需要努力
+{% else %}
+不及格啊，大哥！多去自强学堂学习啊！
+{% endif %}
+
+<br>
+{% if num <= 100 and num >= 0 %}
+num在0到100之间
+{% else %}
+数值不在范围之内！
+{% endif %}
+
+<br>
+{% if request.user.is_authenticated %}
+    {{ request.user.username }}，您好！
+{% else %}
+    请登陆，这里放登陆链接
+{% endif %}
+
+<br>
+path: {{ request.path }}
+
+<br>
+urlencode: Z{{ request.GET.urlencode }}
+
+<br>
+<a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a>
